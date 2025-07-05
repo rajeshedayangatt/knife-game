@@ -10,20 +10,20 @@ class RewardAdScene extends Phaser.Scene {
 
      init ()
   {
-      //  Inject our CSS
-      var element = document.createElement('style');
+      // //  Inject our CSS
+      // var element = document.createElement('style');
 
-      document.head.appendChild(element);
+      // document.head.appendChild(element);
 
-      var sheet = element.sheet;
+      // var sheet = element.sheet;
 
-      var styles = '@font-face { font-family: "troika"; src: url("assets/gogono-cocoa-mochi-cyrillic.otf") format("opentype"); }\n';
+      // var styles = '@font-face { font-family: "troika"; src: url("assets/gogono-cocoa-mochi-cyrillic.otf") format("opentype"); }\n';
 
-      sheet.insertRule(styles, 0);
+      // sheet.insertRule(styles, 0);
 
-      styles = '@font-face { font-family: "Caroni"; src: url("assets/KardinalPro-ExtraBold.ttf") format("truetype"); }';
+      // styles = '@font-face { font-family: "Caroni"; src: url("assets/KardinalPro-ExtraBold.ttf") format("truetype"); }';
 
-      sheet.insertRule(styles, 0);
+      // sheet.insertRule(styles, 0);
   }
 
   preload() {
