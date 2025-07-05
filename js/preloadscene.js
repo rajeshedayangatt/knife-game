@@ -74,19 +74,25 @@
     // }
 
 
-    origin = "https://game.deepsign.in/"
+    // origin = "https://game.deepsign.in/"
     console.log(location.origin);
-    this.load.image("bg", origin + "assets/bg2.jpg");
-    this.load.image("logo", origin + "assets/logo.png");
-    // this.load.atlas(
-    //   "ui",
-    //   origin + "/assets/common1.png",
-    //   origin + "/assets/common1.json"
-    // );
+
+
     // this.load.atlas("ui", "https://game.deepsign.in/assets/common1.png", "https://game.deepsign.in/assets/common1.json");
 
+    var origin = "https://jolly-kelpie-ea4c99.netlify.app/"
 
-    this.load.atlas("ui", "https://game.deepsign.in/assets/common1.png", "https://game.deepsign.in/assets/common1.json");
+
+        this.load.image("bg", origin + "assets/bg2.jpg");
+    this.load.image("logo", origin + "assets/logo.png");
+
+    
+    // this.load.atlas("ui", "https://game.deepsign.in/assets/common1.png", "https://game.deepsign.in/assets/common1.json");
+        this.load.atlas(
+      "ui",
+      origin + "/assets/common1.png",
+      origin + "/assets/common1.json"
+    );
     this.load.atlas("ui2", origin +"assets/common2.png", origin +"assets/common2.json");
     this.load.image("background", origin +"assets/bg (1).jpg");
     this.load.image("tryfail", origin +"assets/images-removebg-preview.png");
