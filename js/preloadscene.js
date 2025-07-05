@@ -90,8 +90,8 @@
     // this.load.atlas("ui", "https://game.deepsign.in/assets/common1.png", "https://game.deepsign.in/assets/common1.json");
         this.load.atlas(
       "ui",
-      origin + "/assets/common1.png",
-      origin + "/assets/common1.json"
+      origin + "assets/common1.png",
+      origin + "assets/common1.json"
     );
     this.load.atlas("ui2", origin +"assets/common2.png", origin +"assets/common2.json");
     this.load.image("background", origin +"assets/bg (1).jpg");
