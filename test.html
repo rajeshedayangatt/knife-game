@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Spaced Spread Particles</title>
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.0/dist/phaser.min.js"></script>
+  <style>
+    body { margin: 0; overflow: hidden; background: black; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+  <script>
+    class SpreadScene extends Phaser.Scene {
+      preload() {
+        this.load.atlas("flares", "assets/flares.png", "assets/flares.json");
+      }
+
+      create() {
+        const { width, height } = this.scale;
+
+        const particles = this.add.particles("flares");
+
+        //  this.emitter =particles.createEmitter({
+        //   frame: ["red", "yellow", "blue", "white", "green"],
+        //   x: width / 2,
+        //   y: height / 2,
+
+        //   // Spacing control
+        //   quantity: 11,
+        //   frequency: 80,
+
+        //   speed: { min: 180, max: 190 },
+        //   angle: { min: 0, max: 360 },
+
+        //   lifespan: 5000,
+
+        //   scale: { start: 0.3, end: 1 },
+        //   alpha: { start: 1, end: 0 },
+        //   blendMode: "ADD",
+
+        //   emitZone: {
+        //     type: "random",
+        //     source: new Phaser.Geom.Circle(0, 0, 2)
+        //   }
+        // });
+
+        // setTimeout(() => {
+        //       this.emitter.stop();     // stop emission
+        //     this.emitter.killAll();  // instantly hide all
+        // },1000)
+
+
+        this.emitter = this.add.particles("flares").createEmitter({
+            frame: ["red", "yellow", "blue", "white", "green"],
+            x: this.scale.width / 2,
+            y: this.scale.height / 2,
+            quantity: 11,
+            frequency: 80,
+            speed: { min: 180, max: 190 },
+            angle: { min: 0, max: 360 },
+            lifespan: 3000,
+            alpha: { start: 1, end: 0 }, // 👈 required for fade
+            scale: { start: 0.3, end: 1 },
+            blendMode: "ADD",
+            emitZone: {
+                type: "random",
+                source: new Phaser.Geom.Circle(0, 0, 2),
+            },
+            });
+
+            setTimeout(() => {
+            this.emitter.stop();
+            }, 1000);
+
+      }
+    }
+
+    const config = {
+      type: Phaser.AUTO,
+      width: window.innerWidth,
+      height: window.innerHeight,
+      backgroundColor: "#000000",
+      scene: SpreadScene,
+      scale: {
+        mode: Phaser.Scale.RESIZE,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+      },
+    };
+
+    new Phaser.Game(config);
+  </script>
+</body>
+</html>

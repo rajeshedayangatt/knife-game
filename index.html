@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, user-scalable=no, minimal-ui">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="full-screen" content="yes" />
+		<meta name="screen-orientation" content="portrait" />
+  <title>Phaser Knife Hit Fix</title>
+  <style>
+ html, body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #game-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    canvas {
+      display: block;
+      margin: auto;
+    }
+
+  @font-face {
+    font-family: "troika";
+    src: url("https://game.deepsign.in/assets/gogono-cocoa-mochi-cyrillic.otf") format("opentype");
+  }
+
+  @font-face {
+    font-family: "Caroni";
+    src: url("assets/KardinalPro-ExtraBold.ttf") format("truetype");
+  }
+  </style>
+  <!-- <script src="//cdn.jsdelivr.net/npm/phaser@3.55.0/dist/phaser.js"></script> -->
+
+</head>
+<body>
+
+<script>
+  function getDeviceType(scene) {
+  const width = scene.cameras.main.width;
+
+  // User-Agent-based detection
+  const ua = navigator.userAgent.toLowerCase();
+  const isIPad = ua.includes("ipad") || (ua.includes("macintosh") && "ontouchend" in document);
+  const isAndroid = ua.includes("android");
+
+  if (isIPad) return "tablet";
+  if (isAndroid && width >= 600 && width <= 1024) return "tablet";
+  if (isAndroid && width < 600) return "mobile";
+
+  if (width <= 480) return "mobile";
+  if (width <= 768) return "tablet";
+
+  return "desktop";
+}
+
+
+window.GameState = {
+  rewardAdShows: true,
+  coinGameroverButtonSHow: true,
+  musisctatus: true,
+  soundStatus: true,
+  language: "english",
+};
+
+
+
+</script>
+
+  <script src="assets/phaser.js?v=3"></script>
+  <script src="js/preloadscene.js?v=3"></script>
+  <script src="js/gameoverscene.js?v=3"></script>
+  <script src="js/mainscene.js?v=3"></script>
+  <script src="js/gamescene.js?v=3"></script>
+  <script src="js/rewardadscene.js?v=3"></script>
+  <script src="js/settingScene.js?v=3"></script>
+
+<script>
+
+const config = {
+      type: Phaser.AUTO,
+      parent: 'game-container',
+      backgroundColor: '#000',
+      //backgroundColor: '#ffffff',
+
+      scale: {
+        mode: Phaser.Scale.RESIZE,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+        width: 640,
+        height: window.innerHeight
+      },
+  physics: {
+    default: 'arcade',
+    arcade: {
+      gravity: { y: 0 },
+      debug: false
+    }
+  },
+    input: {
+    activePointers: 3, // allow multiple touch points if needed
+    touch: {
+      capture: true // Prevent default touch behavior like scrolling
+    }
+  },
+  //scene: [ RewardAdScene], 
+  scene: [PreloadScene, MainMenuScene, GameScene , GameOverScene,RewardAdScene,SettingScene], 
+  parent: 'game-container' // ID of the HTML div to hold the canvas
+
+};
+
+
+const game = new Phaser.Game(config);
+
+window.addEventListener('resize', () => {
+
+  location.reload();
+  return
+  // game.scale.resize(window.innerWidth, window.innerHeight);
+  // game.scene.scenes.forEach(scene => {
+  //   if (scene.resize) scene.resize();
+  // });
+});
+
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  // This code will run as soon as the DOM is ready
+  console.log("DOM fully loaded and parsed");
+
+  game.scale.resize(window.innerWidth, window.innerHeight);
+  game.scene.scenes.forEach(scene => {
+    if (scene.resize) scene.resize();
+  });
+});
+
+
+
+</script>
+</body>
+</html>
