@@ -8,7 +8,7 @@
     document.head.appendChild(element);
     const sheet = element.sheet;
 
-    const troika = '@font-face { font-family: "troika"; src: url("https://game.deepsign.in/assets/gogono-cocoa-mochi-cyrillic.otf") format("opentype"); }';
+    const troika = '@font-face { font-family: "troika"; src: url("https://jolly-kelpie-ea4c99.netlify.app/assets/gogono-cocoa-mochi-cyrillic.otf") format("opentype"); }';
     const caroni = '@font-face { font-family: "Caroni"; src: url("assets/KardinalPro-ExtraBold.ttf") format("truetype"); }';
 
     sheet.insertRule(troika, 0);
